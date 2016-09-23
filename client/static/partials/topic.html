@@ -1,0 +1,47 @@
+<div ng-controller="topicController">
+  <div class="right">
+    <a href="#/home">Dashboard</a>
+    <a href="/logout">Logout</a>
+  </div>
+  <div class='row'>
+    <div class="col s8">
+      <div>
+        <p>
+          <a href="#">{{user.name}}</a> posted a topic:
+        </p>
+        <h4>{{topic.title}}</h4>
+        <p>
+          Description: {{topic.description}}.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s8">
+      <p>
+        Post your answer here....
+      </p>
+      <form>
+        <textarea ng-model="answer.content" rows="8" cols="40"></textarea>
+        <button ng-click="postAnswer(answer)">Post</button>
+      </form>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s8">
+      <div ng-repeat='answer in topic.answers'>
+        <a href="#/user/{{user.id}}">{{answer.users.name}}</a>
+         {{answer.content}}
+         <p>{{answer.users.name}}</p>
+        <div ng-repeat='comment in answer.comments'>
+          <span> <a href="#/user/{{user.id}}"></a>{{comment}}</span>
+        </div>
+        <form>
+          <textarea ng-model="comment.content" rows="6" cols="30"></textarea>
+          <button ng-click="postComment(comment)">Post Comment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

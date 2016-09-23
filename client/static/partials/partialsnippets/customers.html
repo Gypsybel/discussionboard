@@ -1,0 +1,26 @@
+<div class="">
+  <a href="#/dashboard">Dashboard</a> |
+  <a href="#/products">Products</a> |
+  <a href="#/orders">Orders</a> |
+  <a href="#/customers">Customers</a> |
+  <a href="#/settings">Settings</a>
+</div>
+<div ng-controller = "customerController">
+  <h3>Add a new customer</h3>
+  <form>
+    <label>Customer Name:<input type="text" ng-model="newCustomer.name"></label>
+    <button ng-click='addCustomer(newCustomer)'>Add Customer</button>
+  </form>
+  <table>
+    <tr>
+      <th>Customer Name</th>
+      <th> Created Date</th>
+      <th>Actions</th>
+    </tr>
+    <tr ng-repeat="customer in customers">
+      <td>{{customer.name}}</td>
+      <td>{{customer.createdAt}}</td>
+      <td><button ng-click="destroyCustomer(customer)">Remove</button></td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,41 @@
+<div class="">
+  <a href="#/dashboard">Dashboard</a> |
+  <a href="#/products">Products</a> |
+  <a href="#/orders">Orders</a> |
+  <a href="#/customers">Customers</a> |
+  <a href="#/settings">Settings</a>
+</div>
+<div ng-controller = 'ordersController'>
+  <h4>Add new order</h4>
+  <form>
+    <label>Customer: <select class="browser-default" ng-model="order.customer_name" >
+      <option ng-repeat='customer in customers' value='{{customer.name}}'>{{customer.name}}</option>
+    </select>
+  </label>
+  <label>Product: <select class="browser-default" ng-model="order.product" >
+    <option ng-repeat='product in products' value='{{product.name}}'>{{product.name}}</option>
+  </select>
+  </label>
+  <label>Quantity:
+    <input type='number' ng-model='order.quantity'>
+  </label>
+  <button ng-click='createOrder(order)'>Submit Order</button>
+</form>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Date</th>
+    <th>Action</th>
+  </tr>
+  <tr ng-repeat='order in orders'>
+    <td>{{order.customer_name}}</td>
+    <td>{{order.product}}</td>
+    <td>{{order.quantity}}</td>
+    <td>{{order.createdAt}}</td>
+    <td><button ng-click='deleteOrder(order)'>Delete</button></td>
+
+  </tr>
+</table>
+</div>

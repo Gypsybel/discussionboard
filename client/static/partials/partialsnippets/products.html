@@ -1,0 +1,31 @@
+<div class="">
+  <a href="#/dashboard">Dashboard</a> |
+  <a href="#/products">Products</a> |
+  <a href="#/orders">Orders</a> |
+  <a href="#/customers">Customers</a> |
+  <a href="#/settings">Settings</a>
+</div>
+<div ng-controller="productsController">
+  <div class="row">
+    <div class="col s4">
+      <h4>Add a new product</h4>
+        <form method="post">
+          <label>Name<input type="text" ng-model="product.name"></label>
+          <label>Description:<input type="text" ng-model="product.description"></label>
+          <label>Initial Quantity: <input type="number" ng-model="product.quantity"> </label>
+          <label>Image (url):<input type="text" ng-model="product.image"></label>
+          <button ng-click="createProduct(product)">Add Product</button>
+        </form>
+    </div>
+    <div class="col s8">
+      <div ng-repeat='product in products'>
+        <div class="col s3">
+          <img src="{{product.image}}" alt="" style="width: 100%"/>
+          {{product.name}}
+          {{product.quantity}}
+          <button ng-click='deleteProduct(product)'>Delete</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
